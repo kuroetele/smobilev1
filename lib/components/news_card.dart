@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:precis/activities/preview.dart';
-import 'package:precis/config.dart';
+import 'package:snmobile/activities/preview.dart';
+import 'package:snmobile/config.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class NewsCard extends StatelessWidget {

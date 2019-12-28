@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:precis/activities/web_search.dart';
-import 'package:precis/config.dart';
+import 'package:snmobile/activities/web_search.dart';
+import 'package:snmobile/config.dart';
 
 class About extends StatefulWidget {
   @override
@@ -87,7 +87,7 @@ class _PreviewState extends State<About> {
                 child:
                Image.asset('assets/icon/icon.png',width: 100, height:100,)
               ),
-              Text('Precis V1.0', style: TextStyle(
+              Text('snmobile V1.0', style: TextStyle(
                   fontWeight: FontWeight.bold,
                   
               ),),
@@ -95,7 +95,7 @@ class _PreviewState extends State<About> {
                 padding: EdgeInsets.only(
                   top:10, right: 40,left: 40
                   ),
-                child: Text('info@precis.com'),
+                child: Text('info@snmobile.com'),
               ),
               Padding(
                 padding: EdgeInsets.only(

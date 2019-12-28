@@ -1,10 +1,10 @@
 import 'dart:convert' as JSON;
 import 'package:flutter/material.dart';
-import 'package:precis/activities/web_search.dart';
-import 'package:precis/activities/app.dart';
-import 'package:precis/country/flutter_country_picker.dart';
+import 'package:snmobile/activities/web_search.dart';
+import 'package:snmobile/activities/app.dart';
+import 'package:snmobile/country/flutter_country_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:precis/config.dart' as config;
+import 'package:snmobile/config.dart' as config;
 
 class Settings extends StatefulWidget {
   @override

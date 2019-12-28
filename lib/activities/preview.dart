@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:precis/activities/web_search.dart';
-import 'package:precis/config.dart';
+import 'package:snmobile/activities/web_search.dart';
+import 'package:snmobile/config.dart' as config;
+import 'package:nice_button/nice_button.dart';
 import 'package:share/share.dart';
 
 class Preview extends StatefulWidget {
@@ -14,8 +15,14 @@ class Preview extends StatefulWidget {
 class _PreviewState extends State<Preview> {
   dynamic post = [];
   dynamic title, description, url, urlToImage, publishedAt, content;
+
+  int playing = 0;
+  bool down = false;
+  String playerTitle = 'Play';
+  String emailInput = '';
+
   Widget appBarTitle;
-  Icon actionIcon = new Icon(
+  Icon actionIcon = Icon(
     Icons.search,
     color: Colors.white,
   );
@@ -29,10 +36,16 @@ class _PreviewState extends State<Preview> {
       publishedAt = post['publishedAt'];
       content = post['content'];
       title = post['title'];
-      description = title + "\n\n" + post['description'] + "\n" + content;
+      description = post['description'];
+      description = '$title \n\n  $description \n $content';
     });
-    appBarTitle = new Text(title);
+    appBarTitle = Text(title);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   void alert(message) {
@@ -40,14 +53,14 @@ class _PreviewState extends State<Preview> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(appTitle),
+          title: Text(config.appTitle),
           content: Text(message),
         );
       },
     );
   }
 
-  void _searchRequest(String request) {
+  _searchRequest(String request) {
     if (request != '') {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => SearchWeb(search: request)));
@@ -58,7 +71,7 @@ class _PreviewState extends State<Preview> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: backgroundColor,
+        backgroundColor: config.backgroundColor,
         title: Text(title),
         actions: <Widget>[
           IconButton(
@@ -66,16 +79,16 @@ class _PreviewState extends State<Preview> {
             onPressed: () {
               setState(() {
                 if (this.actionIcon.icon == Icons.search) {
-                  this.actionIcon = new Icon(Icons.close);
-                  this.appBarTitle = new TextField(
-                    style: new TextStyle(
+                  this.actionIcon = Icon(Icons.close);
+                  this.appBarTitle = TextField(
+                    style: TextStyle(
                       color: Colors.white,
                     ),
                     textInputAction: TextInputAction.search,
-                    decoration: new InputDecoration(
-                        prefixIcon: new Icon(Icons.search, color: Colors.white),
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search, color: Colors.white),
                         hintText: "Search here...",
-                        hintStyle: new TextStyle(color: Colors.white)),
+                        hintStyle: TextStyle(color: Colors.white)),
                     onSubmitted: _searchRequest,
                   );
                 } else {
@@ -93,100 +106,185 @@ class _PreviewState extends State<Preview> {
           )
         ],
       ),
-      body: ListView(
-        children: <Widget>[
-          Container(
-            width: MediaQuery.of(context).size.width,
-            color: Colors.white,
-            padding: EdgeInsets.only(bottom: 20),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  child: urlToImage == '' ||
-                          urlToImage == null ||
-                          urlToImage == 'null'
-                      ? Container(
-                          width: 0,
-                          height: 0,
-                        )
-                      : Container(
-                          width: double.infinity,
-                          child: Image.network(urlToImage),
+      body: ListView(children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width,
+          color: Colors.white,
+          padding: EdgeInsets.only(bottom: 20),
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                child: urlToImage == '' ||
+                        urlToImage == null ||
+                        urlToImage == 'null'
+                    ? Container(
+                        width: 0,
+                        height: 0,
+                      )
+                    : Container(
+                        width: double.infinity,
+                        child: Image.network(urlToImage),
+                      ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: Text(
+                  title,
+                  style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w500),
+                ),
+              ),
+              description == '' || description == null || description == 'null'
+                  ? Container(
+                      width: 0,
+                      height: 0,
+                    )
+                  : Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 10.0,
                         ),
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Container(
-                  padding: EdgeInsets.only(left: 10, right: 10),
-                  child: Text(
-                    title,
-                    style:
-                        TextStyle(fontSize: 22.0, fontWeight: FontWeight.w500),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            description,
+                            style: TextStyle(color: Colors.black54),
+                          ),
+                        ),
+                      ],
+                    ),
+              content == '' || content == null || content == 'null'
+                  ? Container(
+                      width: 0,
+                      height: 0,
+                    )
+                  : Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            content,
+                            style: TextStyle(color: Colors.black54),
+                          ),
+                        ),
+                      ],
+                    ),
+            ],
+          ),
+        ),
+        Divider(),
+        Container(
+          padding: EdgeInsets.all(20.0),
+          color: Colors.white,
+          child: Row(children: [
+           
+            Expanded(
+                child: Row(
+              children: <Widget>[
+                InkWell(
+                  onTap: () {
+                    String s = "";
+                    if (title != null && title != '') {
+                      s = title;
+                    }
+                    if (description != null && description != '') {
+                      s = s + '. \n\n' + description;
+                    }
+                    if (content != null && content != '') {
+                      s = s + '. \n\n' + content;
+                    }
+                    s = s + '\n\n' + url;
+                    Share.share(s, subject: title);
+                  },
+                  child: Icon(
+                    Icons.screen_share,
+                    size: 40,
+                    color: config.backgroundColor,
                   ),
                 ),
-                description == '' ||
-                        description == null ||
-                        description == 'null'
-                    ? Container(
-                        width: 0,
-                        height: 0,
-                      )
-                    : Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 10.0,
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            child: Text(
-                              description,
-                              style: TextStyle(color: Colors.black54),
-                            ),
-                          ),
-                        ],
+                Text(
+                  ' Share',
+                  style: TextStyle(color: config.backgroundColor),
+                ),
+              ],
+            )),
+            Expanded(
+                child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 50,
+                )
+              ],
+            )),
+          ]),
+        ),
+        Divider(),
+        Container(
+          padding: EdgeInsets.all(32.0),
+          margin: EdgeInsets.only(top: 20),
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Text('Subscribe for Newsletter',
+                    style: TextStyle(
+                      fontSize: 30,
+                    )),
+                SizedBox(height: 20),
+                TextField(
+                  onChanged: (text) {
+                    setState(() {
+                      emailInput = text;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.red, //this has no effect
                       ),
-                content == '' || content == null || content == 'null'
-                    ? Container(
-                        width: 0,
-                        height: 0,
-                      )
-                    : Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 10.0,
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            child: Text(
-                              content,
-                              style: TextStyle(color: Colors.black54),
-                            ),
-                          ),
-                        ],
-                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    hintText: "Email Address",
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: NiceButton(
+                      radius: 40,
+                      padding: const EdgeInsets.all(15),
+                      text: "Subscribe ",
+                      background: config.backgroundColor,
+                      onPressed: () {
+                        if (emailInput != '' &&
+                            emailInput != null &&
+                            emailInput.length > 3 &&
+                            emailInput.contains('@') &&
+                            emailInput.contains('.')) {
+                          config.subscribe();
+                          alert(
+                              'Subscribed successfully, newsletter will now be pushed to $emailInput');
+                               setState(() {
+                                 emailInput='';
+                               });
+                        } else {
+                          alert('Oops! Invalid Email Address');
+                        }
+                      },
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
-          
-          Container(
-            padding: EdgeInsets.all(10.0),
-            width: 150.0,
-            child: InkWell(
-              onTap: (){
-                Share.share('$description \n\n $content $url', subject: '[Precis -News]\n$title');
-              },
-              child: Row(
-                children: <Widget>[
-                  Image.asset('assets/images/share.png', width: 40.0,height:50.0),
-                  Text(' Share'),
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
+        ),
+      ]),
     );
   }
 }

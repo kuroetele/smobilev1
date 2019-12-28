@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
-import 'package:precis/activities/about.dart';
-import 'package:precis/activities/account.dart';
-import 'package:precis/activities/settings.dart';
-import 'package:precis/activities/web_search.dart';
-import 'package:precis/components/news.dart';
-import 'package:precis/config.dart' as config;
+import 'package:snmobile/activities/about.dart';
+import 'package:snmobile/activities/settings.dart';
+import 'package:snmobile/activities/web_search.dart';
+import 'package:snmobile/components/news.dart';
+import 'package:snmobile/config.dart' as config;
 
 class MyApp extends StatefulWidget {
   final country;
@@ -29,7 +28,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           countryFlag=widget.country['asset'];
        
     });
-     appBarTitle=new Text('Precis - $countryName');
+     appBarTitle=new Text('snmobile - $countryName');
     controller = TabController(vsync: this, length: 6);
     super.initState();
   }
@@ -53,7 +52,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Precis - $countryName'),
+          title: Text('snmobile - $countryName'),
           content: Text(message),
         );
       },
@@ -106,7 +105,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                         );
                       }else{
                         actionIcon = Icon(Icons.search, color: Colors.white);
-                        appBarTitle =Text('Precis - $countryName');
+                        appBarTitle =Text('snmobile - $countryName');
                       }
                     });
                   },
@@ -160,8 +159,8 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
             Align(
               alignment: Alignment.topCenter,
               child: UserAccountsDrawerHeader(
-                accountName: Text('Precis - $countryName'),
-                accountEmail: Text('info@precis.'+countryCode.toLowerCase()),
+                accountName: Text('snmobile - $countryName'),
+                accountEmail: Text('info@snmobile.'+countryCode.toLowerCase()),
                 currentAccountPicture: GestureDetector(
                   child: CircleAvatar(
                     backgroundColor: Colors.grey,
@@ -181,16 +180,6 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                 child: ListTile(
                   title: Text('Home'),
                   leading: Icon(Icons.home),
-                )),
-            InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyAccount()));
-                },
-                child: ListTile(
-                  title: Text('My Account'),
-                  leading: Icon(Icons.person),
                 )),
             InkWell(
                 onTap: () {

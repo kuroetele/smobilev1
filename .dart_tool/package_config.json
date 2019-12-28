@@ -140,6 +140,12 @@
       "languageVersion": "1.12"
     },
     {
+      "name": "nice_button",
+      "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/nice_button-0.1.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
       "name": "path",
       "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/path-1.6.4",
       "packageUri": "lib/",
@@ -290,7 +296,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2019-12-21T05:37:21.307025Z",
+  "generated": "2019-12-28T08:07:49.313700Z",
   "generator": "pub",
   "generatorVersion": "2.7.0"
 }

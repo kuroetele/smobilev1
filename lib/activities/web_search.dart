@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:precis/config.dart' ;
+import 'package:snmobile/config.dart' ;
 import 'package:webview_flutter/webview_flutter.dart';
 
 class SearchWeb extends StatefulWidget {
@@ -16,7 +16,7 @@ class SearchWeb extends StatefulWidget {
 
 class SearchWebState extends State<SearchWeb> {
  
-  String selectedUrl='https://www.google.com';
+  String selectedUrl='https://news.google.com/';
   final Completer<WebViewController> _controller =Completer<WebViewController>();
 
   Widget appBarTitle; 
@@ -29,7 +29,7 @@ class SearchWebState extends State<SearchWeb> {
   void initState() {
     setState(() {  
         var search=widget.search;
-        selectedUrl='https://www.google.com/search?q=$search';
+        selectedUrl='https://news.google.com/search?q=$search';
         appBarTitle= new Text(widget.search);
    });
     super.initState();
