@@ -4,6 +4,7 @@ import 'package:snmobile/activities/web_search.dart';
 import 'package:snmobile/activities/app.dart';
 import 'package:snmobile/country/flutter_country_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:snmobile/config.dart' as config;
 
 class Settings extends StatefulWidget {
@@ -20,19 +21,44 @@ class converter {
 }
 
 class _PreviewState extends State<Settings> {
-  Country _selected;
+  Country _selected, _country;
+  String _fontSize;
+  Color pickerColor = Color(0xff443a49);
+  Color currentColor = Color(0xff443a49);
 
-  void saveSelectedCountry(String country) async {
+  @override
+  void initState() {
+    _fontSize = 'Font Size';
+     config.prepareAppTheme();
+
+    super.initState();
+  }
+
+  _saveFontSize(String size) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('fontsize', double.parse(size));
+  }
+
+  _saveSelectedCountry(String country) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('country', country);
   }
 
-  void _searchRequest(String request) {
+  _searchRequest(String request) {
     if (request != '') {
-       Navigator.pop(context);
+      Navigator.pop(context);
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => SearchWeb(search: request)));
     }
+  }
+
+  _onColorChange(Color color) async {
+     SharedPreferences prefs = await SharedPreferences.getInstance();
+     await prefs.setString('background', color.toString());
+    setState(() {
+      pickerColor = color;
+      config.backgroundColor=color;
+    });
   }
 
   void alert(message) {
@@ -47,13 +73,11 @@ class _PreviewState extends State<Settings> {
     );
   }
 
- 
   Widget appBarTitle = new Text("Settings");
   Icon actionIcon = new Icon(
     Icons.search,
     color: Colors.white,
   );
-
 
   @override
   Widget build(BuildContext context) {
@@ -62,25 +86,24 @@ class _PreviewState extends State<Settings> {
         backgroundColor: config.backgroundColor,
         title: appBarTitle,
         actions: <Widget>[
-         IconButton(
+          IconButton(
             icon: actionIcon,
             onPressed: () {
               setState(() {
-                if(this.actionIcon.icon == Icons.search) {
+                if (this.actionIcon.icon == Icons.search) {
                   this.actionIcon = new Icon(Icons.close);
                   this.appBarTitle = new TextField(
                     style: new TextStyle(
-                      color: Colors.white,                    
+                      color: Colors.white,
                     ),
                     textInputAction: TextInputAction.search,
                     decoration: new InputDecoration(
                         prefixIcon: new Icon(Icons.search, color: Colors.white),
                         hintText: "Search here...",
                         hintStyle: new TextStyle(color: Colors.white)),
-                        onSubmitted: _searchRequest,
-                        
+                    onSubmitted: _searchRequest,
                   );
-                }else{
+                } else {
                   this.actionIcon = Icon(Icons.search, color: Colors.white);
                   this.appBarTitle = Text("Settings");
                 }
@@ -96,33 +119,156 @@ class _PreviewState extends State<Settings> {
         ],
       ),
       body: Container(
-        color: config.backgroundColor,
-        height: 100.0,
-        padding: EdgeInsets.all(20),
-        width: double.infinity,
-        margin: EdgeInsets.all(20.0),
-        child: Column(
+        child: ListView(
           children: <Widget>[
-            Text('Change Country', style: TextStyle(color: Colors.white)),
-            Padding(
-              padding: EdgeInsets.only(top: 10.0),
-              child: CountryPicker(
-                showDialingCode: true,
-                onChanged: (Country country) {
-                  setState(() {
-                    String encodedCountry = converter().serialize(country);
-                    saveSelectedCountry(encodedCountry);
-                    Navigator.pop(context);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MyApp(
-                                country: JSON.jsonDecode(encodedCountry))));
-                  });
-                },
-                selectedCountry: _selected,
+            SizedBox(
+              height: 40,
+            ),
+            Container(
+              width: 250.0,
+              margin: EdgeInsets.only(bottom: 20),
+              child: ListTile(
+                title: Padding(
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Text('Change Country',
+                      style: TextStyle(color: Colors.black, fontSize: 16)),
+                ),
+                subtitle: CountryPicker(
+                  showDialingCode: true,
+                  onChanged: (Country country) {
+                    setState(() {
+                      String encodedCountry = converter().serialize(country);
+                      _saveSelectedCountry(encodedCountry);
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyApp(
+                                  country: JSON.jsonDecode(encodedCountry))));
+                    });
+                  },
+                  selectedCountry: _selected,
+                ),
+                dense: true,
               ),
             ),
+            Divider(),
+            Container(
+              width: 250.0,
+              margin: EdgeInsets.only(bottom: 20),
+              child: ListTile(
+                title: Padding(
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Text('Change Font Size',
+                      style: TextStyle(color: Colors.black, fontSize: 16)),
+                ),
+                subtitle: DropdownButton(
+                  isExpanded: true,
+                  underline: SizedBox(),
+                  hint: Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Text(
+                      _fontSize,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight:FontWeight.w500
+                      ),
+                    ),
+                  ),
+                  items: <String>[
+                    '12',
+                    '14',
+                    '16',
+                    '18',
+                    '20',
+                    '22',
+                    '24',
+                    '26',
+                    '28',
+                    '30',
+                    '32',
+                    '34',
+                    '36',
+                    '38',
+                    '40'
+                  ].map((String value) {
+                    return new DropdownMenuItem<String>(
+                      value: value,
+                      child: new Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      _fontSize = 'Font Size : $value';
+                    });
+                    _saveFontSize(value);
+                  },
+                ),
+                dense: true,
+              ),
+            ),
+            Divider(),
+            SizedBox(height: 20),
+            Container(
+              width: 250.0,
+              margin: EdgeInsets.only(bottom: 20),
+              child: ListTile(
+                title: Padding(
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Text('Change Theme',
+                      style: TextStyle(color: Colors.black, fontSize: 16)),
+                ),
+                subtitle: FlatButton(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Browse Colors",
+                        style: TextStyle(color: Colors.black, fontSize: 20,fontWeight:FontWeight.w500),
+                      ),
+                    ),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        child: AlertDialog(
+                          title: const Text('Pick a color!'),
+                          content: SingleChildScrollView(
+                            child: ColorPicker(
+                              pickerColor: pickerColor,
+                              onColorChanged: _onColorChange,
+                              enableLabel: true,
+                              pickerAreaHeightPercent: 0.8,
+                            ),
+                            // Use Material color picker:
+                            //
+                            // child: MaterialPicker(
+                            //   pickerColor: pickerColor,
+                            //   onColorChanged: changeColor,
+                            //   enableLabel: true, // only on portrait mode
+                            // ),
+                            //
+                            // Use Block color picker:
+                            //
+                            // child: BlockPicker(
+                            //   pickerColor: currentColor,
+                            //   onColorChanged: changeColor,
+                            // ),
+                          ),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: const Text('Got it'),
+                              onPressed: () {
+                                setState(() => currentColor = pickerColor);
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
+              ),
+            ),
+            Divider(),
           ],
         ),
       ),
