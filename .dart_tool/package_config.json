@@ -20,6 +20,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "audioplayers",
+      "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/audioplayers-0.13.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/boolean_selector-1.0.5",
       "packageUri": "lib/",
@@ -158,6 +164,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "path_provider",
+      "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/path_provider-1.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "pedantic",
       "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/pedantic-1.8.0+1",
       "packageUri": "lib/",
@@ -168,6 +180,12 @@
       "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/petitparser-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "2.4"
+    },
+    {
+      "name": "platform",
+      "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/platform-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "1.24"
     },
     {
       "name": "quiver",
@@ -272,6 +290,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "uuid",
+      "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/uuid-2.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/vector_math-2.0.8",
       "packageUri": "lib/",
@@ -302,7 +326,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2019-12-29T12:04:03.608582Z",
+  "generated": "2020-01-04T09:32:13.286944Z",
   "generator": "pub",
   "generatorVersion": "2.7.0"
 }
