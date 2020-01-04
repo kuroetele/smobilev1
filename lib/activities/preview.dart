@@ -3,6 +3,7 @@ import 'package:snmobile/activities/web_search.dart';
 import 'package:snmobile/config.dart' as config;
 import 'package:nice_button/nice_button.dart';
 import 'package:share/share.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class Preview extends StatefulWidget {
   final post;
@@ -124,7 +125,18 @@ class _PreviewState extends State<Preview> {
                       )
                     : Container(
                         width: double.infinity,
-                        child: Image.network(urlToImage),
+                        constraints: BoxConstraints(minHeight: 80),
+                        child: CachedNetworkImage(
+                          imageUrl: urlToImage,
+                          placeholder: (context, url) => Center(
+                            child: Container(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator()),
+                          ),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
+                        ),
                       ),
               ),
               SizedBox(
@@ -183,7 +195,6 @@ class _PreviewState extends State<Preview> {
           padding: EdgeInsets.all(20.0),
           color: Colors.white,
           child: Row(children: [
-           
             Expanded(
                 child: Row(
               children: <Widget>[
@@ -270,9 +281,9 @@ class _PreviewState extends State<Preview> {
                           config.subscribe();
                           alert(
                               'Subscribed successfully, newsletter will now be pushed to $emailInput');
-                               setState(() {
-                                 emailInput='';
-                               });
+                          setState(() {
+                            emailInput = '';
+                          });
                         } else {
                           alert('Oops! Invalid Email Address');
                         }

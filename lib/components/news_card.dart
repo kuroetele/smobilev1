@@ -47,6 +47,7 @@ class NewsCard extends StatelessWidget {
                 )
               : Container(
                   width: double.infinity,
+                  constraints: BoxConstraints(minHeight: 80),
                   child:  CachedNetworkImage(
                       imageUrl: urlToImage,
                       placeholder: (context, url) =>
