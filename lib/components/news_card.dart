@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:snmobile/activities/preview.dart';
-import 'package:snmobile/config.dart';
+import 'package:snmobile/config.dart' as config;
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NewsCard extends StatefulWidget {
-  
   dynamic post = [];
   dynamic time;
   dynamic title, description, url, urlToImage, publishedAt, content;
@@ -27,24 +26,21 @@ class NewsCard extends StatefulWidget {
 }
 
 class _NewsCardState extends State<NewsCard> {
+  dynamic isRed = false;
+  dynamic title, description, url, urlToImage, publishedAt, content;
+  dynamic post = [];
 
+  @override
+  void initState() {
+    title = widget.title;
+    description = widget.description;
+    url = widget.url;
+    urlToImage = widget.urlToImage;
+    publishedAt = widget.publishedAt;
+    content = widget.content;
+    post = widget.post;
 
-   dynamic isRed = false;
-   dynamic title, description, url, urlToImage, publishedAt, content;
-   dynamic post = [];
-   
-
-    @override
-  void initState() {  
-      title =widget.title;
-      description=widget.description;
-      url=widget.url;
-      urlToImage=widget.urlToImage;
-      publishedAt=widget.publishedAt;
-      content=widget.content;
-      post=widget.post;
-   
-     checkIfIsRed();
+    checkIfIsRed();
     super.initState();
   }
 
@@ -57,7 +53,6 @@ class _NewsCardState extends State<NewsCard> {
       setState(() => isRed = false);
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -86,17 +81,16 @@ class _NewsCardState extends State<NewsCard> {
               : Container(
                   width: double.infinity,
                   constraints: BoxConstraints(minHeight: 80),
-                  child:  CachedNetworkImage(
-                      imageUrl: urlToImage,
-                      placeholder: (context, url) =>
-                           Center(
-                                child:  Container(
-                                  width: 50.0,
-                                  height: 50.0,
-                               child: CircularProgressIndicator()),
-                              ),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
+                  child: CachedNetworkImage(
+                    imageUrl: urlToImage,
+                    placeholder: (context, url) => Center(
+                      child: Container(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator()),
                     ),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
                 ),
           SizedBox(
             height: 10.0,
@@ -131,13 +125,25 @@ class _NewsCardState extends State<NewsCard> {
                     alignment: Alignment.centerRight,
                     child: Row(
                       children: <Widget>[
-          
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Container(
+                          child: CircleAvatar(
+                            maxRadius: 6.0,
+                            backgroundColor:
+                                isRed ? Colors.grey : config.backgroundColor,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
                         SizedBox(
                           width: 5,
                         ),
                         Text(publishedAt,
                             style: TextStyle(
-                              color: backgroundColor,
+                              color: config.backgroundColor,
                             )),
                         SizedBox(
                           width: 50,
