@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:snmobile/activities/preview.dart';
 import 'package:snmobile/config.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:cached_network_image/cached_network_image.dart';
 
 class NewsCard extends StatelessWidget {
   dynamic post = [];
@@ -18,8 +19,6 @@ class NewsCard extends StatelessWidget {
 
     time = DateTime.parse(publishedAt);
     publishedAt = timeago.format(time);
-
-    print(content);
   }
 
   @override
@@ -48,7 +47,17 @@ class NewsCard extends StatelessWidget {
                 )
               : Container(
                   width: double.infinity,
-                  child: Image.network(urlToImage),
+                  child:  CachedNetworkImage(
+                      imageUrl: urlToImage,
+                      placeholder: (context, url) =>
+                           Center(
+                                child:  Container(
+                                  width: 50.0,
+                                  height: 50.0,
+                               child: CircularProgressIndicator()),
+                              ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
                 ),
           SizedBox(
             height: 10.0,
