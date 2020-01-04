@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:snmobile/config.dart';
 
@@ -18,4 +19,12 @@ Future<http.Response> getVoice(String text) async{
         "name": "en-US-Wavenet-D"
       }
     };
+
+    var response = http.post(
+      url,
+      headers:{"Content-Type":"application/json"},
+      body: json.encode(body)
+    );
+
+  return response;
 }
