@@ -3,6 +3,7 @@ import 'package:snmobile/activities/preview.dart';
 import 'package:snmobile/config.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NewsCard extends StatefulWidget {
   
@@ -28,8 +29,10 @@ class NewsCard extends StatefulWidget {
 class _NewsCardState extends State<NewsCard> {
 
 
+   dynamic isRed = false;
    dynamic title, description, url, urlToImage, publishedAt, content;
    dynamic post = [];
+   
 
     @override
   void initState() {  
@@ -41,7 +44,18 @@ class _NewsCardState extends State<NewsCard> {
       content=widget.content;
       post=widget.post;
    
+     checkIfIsRed();
     super.initState();
+  }
+
+  void checkIfIsRed() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String uri = prefs.getString(url);
+    if (uri != null && uri != '') {
+      setState(() => isRed = true);
+    } else {
+      setState(() => isRed = false);
+    }
   }
 
 
