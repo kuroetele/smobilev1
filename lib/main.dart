@@ -39,6 +39,8 @@ class _PrepareAppState extends State<PrepareApp> {
   @override
   Widget build(BuildContext context) {
 
+
+
     return SplashScreen(
       image: Image.asset('assets/icon/launcher.png'),
       seconds: 10,

@@ -308,6 +308,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "toast",
+      "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/toast-0.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "typed_data",
       "rootUri": "file:///C:/Flutter/libs/.pub-cache/hosted/pub.dartlang.org/typed_data-1.1.6",
       "packageUri": "lib/",
@@ -350,7 +356,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-01-04T14:25:54.530817Z",
+  "generated": "2020-01-04T15:35:39.509134Z",
   "generator": "pub",
   "generatorVersion": "2.7.0"
 }
