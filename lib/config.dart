@@ -33,7 +33,6 @@ void getDeviceCountry() async {
         }
       }
     } on SocketException catch (_) {
-      print('not connected');
       SharedPreferences prefs = await SharedPreferences.getInstance();
       dynamic storedCountry = prefs.getString('country');
     } catch (ex) {

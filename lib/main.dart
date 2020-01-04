@@ -33,16 +33,7 @@ class _PrepareAppState extends State<PrepareApp> {
   @override
   void initState() {
     config.prepareAppTheme();
-    prepareSelectedCountry();
     super.initState();
-  }
-
-  prepareSelectedCountry () async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String storedCountry=prefs.getString('country') ?? 'NONE';
-    setState(() {
-     country=JSON.jsonDecode(storedCountry);
-    });
   }
 
   @override
