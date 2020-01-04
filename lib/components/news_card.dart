@@ -4,7 +4,8 @@ import 'package:snmobile/config.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:cached_network_image/cached_network_image.dart';
 
-class NewsCard extends StatelessWidget {
+class NewsCard extends StatefulWidget {
+  
   dynamic post = [];
   dynamic time;
   dynamic title, description, url, urlToImage, publishedAt, content;
@@ -20,6 +21,29 @@ class NewsCard extends StatelessWidget {
     time = DateTime.parse(publishedAt);
     publishedAt = timeago.format(time);
   }
+  @override
+  _NewsCardState createState() => _NewsCardState();
+}
+
+class _NewsCardState extends State<NewsCard> {
+
+
+   dynamic title, description, url, urlToImage, publishedAt, content;
+   dynamic post = [];
+
+    @override
+  void initState() {  
+      title =widget.title;
+      description=widget.description;
+      url=widget.url;
+      urlToImage=widget.urlToImage;
+      publishedAt=widget.publishedAt;
+      content=widget.content;
+      post=widget.post;
+   
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
