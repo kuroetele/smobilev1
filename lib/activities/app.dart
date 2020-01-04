@@ -4,6 +4,7 @@ import 'package:snmobile/activities/about.dart';
 import 'package:snmobile/activities/settings.dart';
 import 'package:snmobile/activities/web_search.dart';
 import 'package:snmobile/components/news.dart';
+import 'package:share/share.dart';
 import 'package:snmobile/config.dart' as config;
 
 class MyApp extends StatefulWidget {
@@ -190,6 +191,15 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                 child: ListTile(
                   title: Text('Settings'),
                   leading: Icon(Icons.settings),
+                )),
+          InkWell(
+                onTap: () {
+                  Share.share(
+                      "Hi There!\n\nDownload Precis Breaking News App v1.0\n\nEnjoy latest news from different news sources including BBC, Aljazeera and many more in summary and in one place.The platform fetches the latest news and provide to you base on your country, We find the latest, You read easily.\n\nhttps://play.google.com/store/apps/details?id=com.rabsdeveloper.precis");
+                },
+                child: ListTile(
+                  title: Text('Share App'),
+                  leading: Icon(Icons.share),
                 )),
             InkWell(
                 onTap: () {
