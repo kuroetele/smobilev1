@@ -38,6 +38,7 @@ dev_dependencies:
   nice_button: ^0.1.7
   flutter_colorpicker: ^0.2.6
   audioplayers: ^0.13.5
+  cached_network_image: ^2.0.0
 
 flutter_icons:
   android: "launcher_icon" 
