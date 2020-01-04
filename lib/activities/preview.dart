@@ -4,6 +4,7 @@ import 'package:snmobile/config.dart' as config;
 import 'package:nice_button/nice_button.dart';
 import 'package:share/share.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Preview extends StatefulWidget {
   final post;
@@ -41,12 +42,20 @@ class _PreviewState extends State<Preview> {
       description = '$title \n\n  $description \n $content';
     });
     appBarTitle = Text(title);
+
+     addAsRedArticle();
     super.initState();
   }
 
   @override
   void dispose() {
     super.dispose();
+  }
+
+
+  void addAsRedArticle() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(url, url);
   }
 
   void alert(message) {
