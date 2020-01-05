@@ -287,7 +287,7 @@ class _PreviewState extends State<Preview> {
                             emailInput.length > 3 &&
                             emailInput.contains('@') &&
                             emailInput.contains('.')) {
-                          config.subscribe();
+                          config.subscribe(emailInput,'1008765434567.0');
                           alert(
                               'Subscribed successfully, newsletter will now be pushed to $emailInput');
                           setState(() {
