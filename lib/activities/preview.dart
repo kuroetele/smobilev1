@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:snmobile/activities/web_search.dart';
 import 'package:snmobile/config.dart' as config;
+import 'dart:convert';
+import 'dart:typed_data';
+import 'package:snmobile/components/voice_speech.dart';
+import 'package:snmobile/components/voice_player.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:nice_button/nice_button.dart';
 import 'package:share/share.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:io';
 
 class Preview extends StatefulWidget {
   final post;
@@ -22,6 +28,8 @@ class _PreviewState extends State<Preview> {
   bool down = false;
   String playerTitle = 'Play';
   String emailInput = '';
+  MyPlayer audioPlayer = MyPlayer();
+  TextEditingController _controller = new TextEditingController();
 
   Widget appBarTitle;
   Icon actionIcon = Icon(
@@ -31,6 +39,7 @@ class _PreviewState extends State<Preview> {
 
   @override
   void initState() {
+    config.prepareAppTheme();
     setState(() {
       post = widget.post;
       url = post['url'];
@@ -41,17 +50,16 @@ class _PreviewState extends State<Preview> {
       description = post['description'];
       description = '$title \n\n  $description \n $content';
     });
+    addAsRedArticle();
     appBarTitle = Text(title);
-
-     addAsRedArticle();
     super.initState();
   }
 
   @override
   void dispose() {
+    _pauses();
     super.dispose();
   }
-
 
   void addAsRedArticle() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -65,9 +73,65 @@ class _PreviewState extends State<Preview> {
         return AlertDialog(
           title: Text(config.appTitle),
           content: Text(message),
+          actions: <Widget>[
+          FlatButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
         );
       },
     );
+  }
+
+  _pauses() async {
+    final val = await audioPlayer.pause();
+    if (val == 1) {
+      setState(() {
+        playing = 0;
+        playerTitle = 'Play';
+      });
+    }
+  }
+
+  _plays(String text) async {
+    if (down == false) {
+      setState(() {
+        playing = 1;
+        playerTitle = 'Loading..';
+      });
+
+      var response = await getVoice(text);
+      var resData = jsonDecode(response.body);
+      String audioBase64 = resData['audioContent'];
+      Uint8List bytes = base64Decode(audioBase64);
+      final dir = await getApplicationDocumentsDirectory();
+      final file = File('${dir.path}/audio.mp3');
+
+      if (await file.exists()) {
+        file.delete();
+      }
+      await file.writeAsBytes(bytes);
+      final val = await audioPlayer.play();
+      if (val == 1) {
+        setState(() {
+          playing = 2;
+          playerTitle = 'Playing..';
+          down = true;
+        });
+      }
+    } else {
+      final val = await audioPlayer.play();
+      if (val == 1) {
+        setState(() {
+          playing = 2;
+          playerTitle = 'Playing..';
+          down = true;
+        });
+      }
+    }
   }
 
   _searchRequest(String request) {
@@ -134,15 +198,16 @@ class _PreviewState extends State<Preview> {
                       )
                     : Container(
                         width: double.infinity,
-                        constraints: BoxConstraints(minHeight: 80),
+                         constraints: BoxConstraints(minHeight: 80),
                         child: CachedNetworkImage(
                           imageUrl: urlToImage,
-                          placeholder: (context, url) => Center(
-                            child: Container(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator()),
-                          ),
+                          placeholder: (context, url) =>
+                             Center(
+                                child:  Container(
+                                  width: 50.0,
+                                  height: 50.0,
+                               child: CircularProgressIndicator()),
+                              ),
                           errorWidget: (context, url, error) =>
                               Icon(Icons.error),
                         ),
@@ -207,6 +272,41 @@ class _PreviewState extends State<Preview> {
             Expanded(
                 child: Row(
               children: <Widget>[
+                playing == 0
+                    ? InkWell(
+                        onTap: () {
+                          String s = "";
+                          if (title != null && title != '') {
+                            s = title;
+                          }
+                          if (description != null && description != '') {
+                            s = s + '. ' + description;
+                          }
+                          if (content != null && content != '') {
+                            s = s + '. ' + content;
+                          }
+                          _plays(s);
+                        },
+                        child: Icon(Icons.play_circle_filled,
+                            size: 40, color: config.backgroundColor))
+                    : playing == 1
+                        ? Icon(Icons.pause_circle_outline,
+                            size: 40, color: config.backgroundColor)
+                        : InkWell(
+                            onTap: () {
+                              _pauses();
+                            },
+                            child: Icon(Icons.pause_circle_filled,
+                                size: 40, color: config.backgroundColor)),
+                Text(
+                  playerTitle,
+                  style: TextStyle(color: config.backgroundColor),
+                ),
+              ],
+            )),
+            Expanded(
+                child: Row(
+              children: <Widget>[
                 InkWell(
                   onTap: () {
                     String s = "";
@@ -257,6 +357,7 @@ class _PreviewState extends State<Preview> {
                     )),
                 SizedBox(height: 20),
                 TextField(
+                  controller: _controller,
                   onChanged: (text) {
                     setState(() {
                       emailInput = text;
@@ -287,7 +388,8 @@ class _PreviewState extends State<Preview> {
                             emailInput.length > 3 &&
                             emailInput.contains('@') &&
                             emailInput.contains('.')) {
-                          config.subscribe(emailInput,'1008765434567.0');
+                           config.subscribe(emailInput,'$MediaQuery(context).session');
+                          _controller.clear();
                           alert(
                               'Subscribed successfully, newsletter will now be pushed to $emailInput');
                           setState(() {
