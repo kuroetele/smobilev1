@@ -48,8 +48,7 @@ class _PrepareAppState extends State<PrepareApp> {
       isfound=true;
     }else{
       isfound=false;
-    }
-    
+    } 
   }
   @override
   Widget build(BuildContext context) {

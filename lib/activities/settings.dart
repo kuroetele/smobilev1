@@ -21,10 +21,16 @@ class converter {
 }
 
 class _PreviewState extends State<Settings> {
-  Country _selected, _country;
+
   String _fontSize;
   Color pickerColor = Color(0xff443a49);
   Color currentColor = Color(0xff443a49);
+  Country dafultCountry = Country(
+    asset: "assets/flags/ng_flag.png",
+    dialingCode: "234",
+    isoCode: "NG",
+    name: "Nigeria",
+  );
 
   @override
   void initState() {
@@ -119,14 +125,15 @@ class _PreviewState extends State<Settings> {
         ],
       ),
       body: Container(
+        width: double.infinity,
         child: ListView(
           children: <Widget>[
             SizedBox(
               height: 40,
             ),
-            Container(
-              width: 250.0,
-              margin: EdgeInsets.only(bottom: 20),
+            SizedBox(
+              width:  MediaQuery.of(context).size.width/2,
+              //margin: EdgeInsets.only(bottom: 20),
               child: ListTile(
                 title: Padding(
                   padding: EdgeInsets.only(bottom: 10.0),
@@ -137,25 +144,27 @@ class _PreviewState extends State<Settings> {
                   showDialingCode: true,
                   onChanged: (Country country) {
                     setState(() {
-                      String encodedCountry = converter().serialize(country);
+                       String encodedCountry = converter().serialize(country);
                       _saveSelectedCountry(encodedCountry);
+                      dafultCountry=country;
+
                       Navigator.pop(context);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => MyApp(
                                   country: JSON.jsonDecode(encodedCountry))));
-                    });
+                     });
                   },
-                  selectedCountry: _selected,
+                  selectedCountry: dafultCountry,
                 ),
                 dense: true,
               ),
             ),
             Divider(),
-            Container(
-              width: 250.0,
-              margin: EdgeInsets.only(bottom: 20),
+            SizedBox(
+              width:  MediaQuery.of(context).size.width/2,
+             // margin: EdgeInsets.only(bottom: 20),
               child: ListTile(
                 title: Padding(
                   padding: EdgeInsets.only(bottom: 10.0),
@@ -210,9 +219,8 @@ class _PreviewState extends State<Settings> {
             ),
             Divider(),
             SizedBox(height: 20),
-            Container(
-              width: 250.0,
-              margin: EdgeInsets.only(bottom: 20),
+            SizedBox(
+              width:  MediaQuery.of(context).size.width/2,
               child: ListTile(
                 title: Padding(
                   padding: EdgeInsets.only(bottom: 10.0),
