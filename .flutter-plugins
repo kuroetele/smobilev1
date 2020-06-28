@@ -1,11 +1,11 @@
 # This is a generated file; do not edit or check into version control.
-audioplayers=C:\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\audioplayers-0.13.6\\
-clipboard_manager=C:\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\clipboard_manager-0.0.4\\
-flutter_country_picker=C:\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_country_picker-0.1.6\\
-path_provider=C:\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.5.1\\
-share=C:\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\share-0.6.3+5\\
-shared_preferences=C:\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences-0.5.6\\
-shared_preferences_macos=C:\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_macos-0.0.1+3\\
-shared_preferences_web=C:\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_web-0.1.2+2\\
-sqflite=C:\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\sqflite-1.2.0\\
-webview_flutter=C:\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\webview_flutter-0.3.18+1\\
+audioplayers=C:\\Mobile\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\audioplayers-0.13.6\\
+clipboard_manager=C:\\Mobile\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\clipboard_manager-0.0.4\\
+flutter_country_picker=C:\\Mobile\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_country_picker-0.1.6\\
+path_provider=C:\\Mobile\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.5.1\\
+share=C:\\Mobile\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\share-0.6.3+5\\
+shared_preferences=C:\\Mobile\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences-0.5.6\\
+shared_preferences_macos=C:\\Mobile\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_macos-0.0.1+3\\
+shared_preferences_web=C:\\Mobile\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_web-0.1.2+2\\
+sqflite=C:\\Mobile\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\sqflite-1.2.0\\
+webview_flutter=C:\\Mobile\\Flutter\\libs\\.pub-cache\\hosted\\pub.dartlang.org\\webview_flutter-0.3.18+1\\

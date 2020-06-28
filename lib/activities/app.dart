@@ -195,7 +195,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           InkWell(
                 onTap: () {
                   Share.share(
-                      "Hi There!\n\nDownload Precis Breaking News App v1.0\n\nEnjoy latest news from different news sources including BBC, Aljazeera and many more in summary and in one place.The platform fetches the latest news and provide to you base on your country, We find the latest, You read easily.\n\nhttps://play.google.com/store/apps/details?id=com.rabsdeveloper.precis");
+                      "Hi There!\n\nDownload snmobile Breaking News App v1.0\n\nEnjoy latest news from different news sources including BBC, Aljazeera and many more in summary and in one place.The platform fetches the latest news and provide to you base on your country, We find the latest, You read easily.\n\nhttps://play.google.com/store/apps/details?id=com.rabsdeveloper.snmobile");
                 },
                 child: ListTile(
                   title: Text('Share App'),
