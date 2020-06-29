@@ -30,7 +30,7 @@ dev_dependencies:
   http: ^0.12.0+2
   flutter_launcher_icons: ^0.7.3
   flutter_country_picker: ^0.1.6
-  bubble_tab_indicator: "^0.1.4"
+  bubble_tab_indicator: ^0.1.4
   webview_flutter: ^0.3.17
   splashscreen: ^1.2.0
   shared_preferences: ^0.5.4+8
@@ -40,6 +40,8 @@ dev_dependencies:
   audioplayers: ^0.13.5
   cached_network_image: ^2.0.0
   toast: ^0.1.5
+  flutter_local_notifications: 1.4.4+1
+  rxdart: 0.24.1
 
 flutter_icons:
   android: "launcher_icon" 

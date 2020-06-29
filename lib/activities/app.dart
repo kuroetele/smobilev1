@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:snmobile/activities/about.dart';
@@ -7,14 +9,17 @@ import 'package:snmobile/components/news.dart';
 import 'package:share/share.dart';
 import 'package:snmobile/config.dart' as config;
 
+
+
 class MyApp extends StatefulWidget {
   final country;
+
   MyApp({this.country});
+
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
-
   TabController controller;
   String countryName;
   String countryCode;
@@ -24,14 +29,14 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     setState(() {
-          countryCode=widget.country['isoCode'];
-          countryName=widget.country['name'];
-          countryFlag=widget.country['asset'];
-       
+      countryCode = widget.country['isoCode'];
+      countryName = widget.country['name'];
+      countryFlag = widget.country['asset'];
     });
-     appBarTitle=new Text('snmobile - $countryName');
+    appBarTitle = new Text('snmobile - $countryName');
     controller = TabController(vsync: this, length: 6);
     super.initState();
+
   }
 
   @override
@@ -40,12 +45,13 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
-  void _searchRequest(String request){
-     if(request!=''){
-       Navigator.push(context,MaterialPageRoute(
-         builder: (context)=>SearchWeb(search: request)
-       ));
-     }
+
+
+  void _searchRequest(String request) {
+    if (request != '') {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => SearchWeb(search: request)));
+    }
   }
 
   void alert(message) {
@@ -60,17 +66,13 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     );
   }
 
-
- Icon actionIcon = new Icon(
-     Icons.search,
+  Icon actionIcon = new Icon(
+    Icons.search,
     color: Colors.white,
   );
 
-
   @override
   Widget build(BuildContext context) {
-
-  
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width, 100.0),
@@ -87,30 +89,30 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
             title: appBarTitle,
             actions: <Widget>[
               IconButton(
-                  icon: actionIcon,
-                  onPressed: () {
-                    setState(() {
-                      if(actionIcon.icon == Icons.search) {
-                        actionIcon = new Icon(Icons.close);
-                        appBarTitle = new TextField(
-                          style: new TextStyle(
-                            color: Colors.white,                    
-                          ),
-                          textInputAction: TextInputAction.search,
-                          decoration: new InputDecoration(
-                              prefixIcon: new Icon(Icons.search, color: Colors.white),
-                              hintText: "Search here...",
-                              hintStyle: new TextStyle(color: Colors.white)),
-                              onSubmitted: _searchRequest,
-                              
-                        );
-                      }else{
-                        actionIcon = Icon(Icons.search, color: Colors.white);
-                        appBarTitle =Text('snmobile - $countryName');
-                      }
-                    });
-                  },
-                ),
+                icon: actionIcon,
+                onPressed: () {
+                  setState(() {
+                    if (actionIcon.icon == Icons.search) {
+                      actionIcon = new Icon(Icons.close);
+                      appBarTitle = new TextField(
+                        style: new TextStyle(
+                          color: Colors.white,
+                        ),
+                        textInputAction: TextInputAction.search,
+                        decoration: new InputDecoration(
+                            prefixIcon:
+                                new Icon(Icons.search, color: Colors.white),
+                            hintText: "Search here...",
+                            hintStyle: new TextStyle(color: Colors.white)),
+                        onSubmitted: _searchRequest,
+                      );
+                    } else {
+                      actionIcon = Icon(Icons.search, color: Colors.white);
+                      appBarTitle = Text('snmobile - $countryName');
+                    }
+                  });
+                },
+              ),
               IconButton(
                 icon: Icon(Icons.notifications, color: Colors.white),
                 onPressed: () {
@@ -161,7 +163,8 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
               alignment: Alignment.topCenter,
               child: UserAccountsDrawerHeader(
                 accountName: Text('snmobile - $countryName'),
-                accountEmail: Text('info@snmobile.'+countryCode.toLowerCase()),
+                accountEmail:
+                    Text('info@snmobile.' + countryCode.toLowerCase()),
                 currentAccountPicture: GestureDetector(
                   child: CircleAvatar(
                     backgroundColor: Colors.grey,
@@ -192,7 +195,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                   title: Text('Settings'),
                   leading: Icon(Icons.settings),
                 )),
-          InkWell(
+            InkWell(
                 onTap: () {
                   Share.share(
                       "Hi There!\n\nDownload snmobile Breaking News App v1.0\n\nEnjoy latest news from different news sources including BBC, Aljazeera and many more in summary and in one place.The platform fetches the latest news and provide to you base on your country, We find the latest, You read easily.\n\nhttps://play.google.com/store/apps/details?id=com.rabsdeveloper.snmobile");
@@ -214,45 +217,20 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           ],
         ),
       ),
-      body:Container(
-            width: double.infinity,
-            child: 
-            TabBarView(
-              controller: controller,
-              children: <Widget>[
-                News(
-                  type: "Sports",
-                  code:countryCode,
-                  name:countryName
-                ),
-                News(
-                  type: "Entertainment",
-                   code:countryCode,
-                   name:countryName
-                ),
-                News(
-                  type: "Business",
-                  code:countryCode,
-                  name:countryName
-                ),
-                News(
-                  type: "Technology",
-                  code:countryCode,
-                  name:countryName
-                ),
-                News(
-                  type: "Health",
-                  code:countryCode,
-                  name:countryName
-                ),
-                News(
-                  type: "Science",
-                  code:countryCode,
-                  name:countryName
-                ),
-              ],
-            ),
-          ),
+      body: Container(
+        width: double.infinity,
+        child: TabBarView(
+          controller: controller,
+          children: <Widget>[
+            News(type: "Sports", code: countryCode, name: countryName),
+            News(type: "Entertainment", code: countryCode, name: countryName),
+            News(type: "Business", code: countryCode, name: countryName),
+            News(type: "Technology", code: countryCode, name: countryName),
+            News(type: "Health", code: countryCode, name: countryName),
+            News(type: "Science", code: countryCode, name: countryName),
+          ],
+        ),
+      ),
     );
   }
 }

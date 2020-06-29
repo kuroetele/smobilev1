@@ -137,6 +137,7 @@ class _PreviewState extends State<Preview> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: config.backgroundColor,
