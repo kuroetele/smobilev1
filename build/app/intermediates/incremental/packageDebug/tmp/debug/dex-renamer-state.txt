@@ -1,4 +1,4 @@
-#Mon Jun 29 10:32:19 WAT 2020
-base.0=C\:\\Projects\\Flutter\\Project\\smobilev1\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Mon Jun 29 17:08:24 IST 2020
+base.0=E\:\\Live_project_2020\\smobiledev1\\smobilev1\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

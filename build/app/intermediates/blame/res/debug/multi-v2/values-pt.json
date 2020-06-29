@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Projects\\Flutter\\Project\\smobilev1\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pt\\values-pt.xml",
+            "outputFile": "E:\\Live_project_2020\\smobiledev1\\smobilev1\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pt\\values-pt.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\rabiu abdull ali\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\PC - 06\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.2.0.aar\\2a05fda7f993fa473f77e871ff83efad\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

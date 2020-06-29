@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:snmobile/activities/preview.dart';
 import 'package:snmobile/config.dart';
 import 'package:snmobile/components/news_card.dart';
 import 'package:http/http.dart' as http;
@@ -46,7 +46,7 @@ class _NewsState extends State<News> {
         if (_dump.length != _dump1.length) {
           _showNotification();
         }
-        _dump =_dump1;
+       _dump =_dump1;
         setState(() {});
       });
 
@@ -63,7 +63,10 @@ class _NewsState extends State<News> {
     await flutterLocalNotificationsPlugin.show(
         0, 'Smobilev', 'plain body', platformChannelSpecifics,
         payload: 'item x');
+
+
   }
+
 
   Future _ftechNews(String type, String isoCode, bool isFirst) async {
     http.Client client = new http.Client();

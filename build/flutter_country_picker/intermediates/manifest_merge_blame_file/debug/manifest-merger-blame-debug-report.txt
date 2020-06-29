@@ -3,6 +3,6 @@
 3    package="rocks.biessek.fluttercountrypicker" >
 4
 5    <uses-sdk android:minSdkVersion="16" />
-5-->C:\Mobile\Flutter\libs\.pub-cache\hosted\pub.dartlang.org\flutter_country_picker-0.1.6\android\src\main\AndroidManifest.xml
+5-->E:\Sdk\navFlutterSdk\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_country_picker-0.1.6\android\src\main\AndroidManifest.xml
 6
 7</manifest>

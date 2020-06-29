@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/android.iml" filepath="$PROJECT_DIR$/.idea/android.iml" group="android" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers-0.13.6/android/android-audioplayers.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers-0.13.6/android/android-audioplayers.iml" group="android/audioplayers" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/clipboard_manager-0.0.4/android/android-clipboard_manager.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/clipboard_manager-0.0.4/android/android-clipboard_manager.iml" group="android/clipboard_manager" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_country_picker-0.1.6/android/android-flutter_country_picker.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_country_picker-0.1.6/android/android-flutter_country_picker.iml" group="android/flutter_country_picker" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.5.1/android/android-path_provider.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.5.1/android/android-path_provider.iml" group="android/path_provider" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/share-0.6.3+5/android/android-share.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/share-0.6.3+5/android/android-share.iml" group="android/share" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.6/android/android-shared_preferences.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.6/android/android-shared_preferences.iml" group="android/shared_preferences" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+3/android/android-shared_preferences_macos.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+3/android/android-shared_preferences_macos.iml" group="android/shared_preferences_macos" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+2/android/android-shared_preferences_web.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+2/android/android-shared_preferences_web.iml" group="android/shared_preferences_web" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.2.0/android/android-sqflite.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.2.0/android/android-sqflite.iml" group="android/sqflite" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-0.3.18+1/android/android-webview_flutter.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-0.3.18+1/android/android-webview_flutter.iml" group="android/webview_flutter" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="android/app" />
+      <module fileurl="file://E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-1.4.4+1/android/flutter_local_notifications.iml" filepath="E:/Sdk/navFlutterSdk/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-1.4.4+1/android/flutter_local_notifications.iml" group="android/flutter_local_notifications" />
+    </modules>
+  </component>
+</project>

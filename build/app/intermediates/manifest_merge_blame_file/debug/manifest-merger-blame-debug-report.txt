@@ -12,61 +12,78 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:9:5-67
-14-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:9:22-64
+14-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:9:5-67
+14-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:9:22-64
 15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-15-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:10:5-79
-15-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:10:22-76
+15-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:10:5-79
+15-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:10:22-76
 16    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-16-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:11:5-76
-16-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:11:22-73
-17
-18    <application
-18-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:14:5-35:19
-19        android:name="io.flutter.app.FlutterApplication"
-19-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:15:9-57
-20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-20-->[androidx.core:core:1.1.0] C:\Users\rabiu abdull ali\.gradle\caches\transforms-2\files-2.1\a528b13ac93e64cafa3d0480e2c93207\core-1.1.0\AndroidManifest.xml:24:18-86
-21        android:debuggable="true"
-22        android:icon="@mipmap/launcher_icon"
-22-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:17:9-45
-23        android:label="snmobile" >
-23-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:16:9-33
-24        <activity
-24-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:18:9-29:20
-25            android:name="com.sunnews.snmobile.MainActivity"
-25-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:19:13-41
-26            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-26-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:22:13-163
-27            android:hardwareAccelerated="true"
-27-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:23:13-47
-28            android:launchMode="singleTop"
-28-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:20:13-43
-29            android:theme="@style/LaunchTheme"
-29-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:21:13-47
-30            android:windowSoftInputMode="adjustResize" >
-30-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:24:13-55
-31            <intent-filter>
-31-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:25:13-28:29
-32                <action android:name="android.intent.action.MAIN" />
-32-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:26:17-68
-32-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:26:25-66
-33
-34                <category android:name="android.intent.category.LAUNCHER" />
-34-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:27:17-76
-34-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:27:27-74
-35            </intent-filter>
-36        </activity>
-37        <!--
-38             Don't delete the meta-data below.
-39             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-40        -->
-41        <meta-data
-41-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:32:9-34:33
-42            android:name="flutterEmbedding"
-42-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:33:13-44
-43            android:value="2" />
-43-->C:\Projects\Flutter\Project\smobilev1\android\app\src\main\AndroidManifest.xml:34:13-30
-44    </application>
-45
-46</manifest>
+16-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:11:5-76
+16-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:11:22-73
+17    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+17-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:12:5-80
+17-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:12:22-78
+18    <uses-permission android:name="android.permission.VIBRATE" />
+18-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:13:5-66
+18-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:13:22-63
+19
+20    <application
+20-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:16:5-44:19
+21        android:name="io.flutter.app.FlutterApplication"
+21-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:17:9-57
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.2.0] C:\Users\PC - 06\.gradle\caches\transforms-2\files-2.1\b6252bb7f30c7dceb20e97dfa6dfae00\core-1.2.0\AndroidManifest.xml:24:18-86
+23        android:debuggable="true"
+24        android:icon="@mipmap/launcher_icon"
+24-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:19:9-45
+25        android:label="snmobile" >
+25-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:18:9-33
+26        <activity
+26-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:20:9-32:20
+27            android:name="com.sunnews.snmobile.MainActivity"
+27-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:21:13-41
+28            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+28-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:24:13-163
+29            android:hardwareAccelerated="true"
+29-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:25:13-47
+30            android:launchMode="singleTop"
+30-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:22:13-43
+31            android:theme="@style/LaunchTheme"
+31-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:23:13-47
+32            android:windowSoftInputMode="adjustResize" >
+32-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:26:13-55
+33            <intent-filter>
+33-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:27:13-30:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:28:17-68
+34-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:28:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:29:17-76
+36-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:29:27-74
+37            </intent-filter>
+38        </activity>
+39        <!--
+40             Don't delete the meta-data below.
+41             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+42        -->
+43        <meta-data
+43-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:35:9-37:33
+44            android:name="flutterEmbedding"
+44-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:36:13-44
+45            android:value="2" />
+45-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:37:13-30
+46
+47        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver" >
+47-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:39:9-43:20
+47-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:39:19-107
+48            <intent-filter>
+48-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:40:13-42:29
+49                <action android:name="android.intent.action.BOOT_COMPLETED" />
+49-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:41:17-79
+49-->E:\Live_project_2020\smobiledev1\smobilev1\android\app\src\main\AndroidManifest.xml:41:25-76
+50            </intent-filter>
+51        </receiver>
+52    </application>
+53
+54</manifest>

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert' as JSON;
 import 'package:flutter/material.dart';
+import 'package:snmobile/activities/preview.dart';
 import 'package:snmobile/components/news.dart';
 import 'package:snmobile/config.dart' as config;
 import 'package:splashscreen/splashscreen.dart';
@@ -52,9 +53,12 @@ Future<void> main() async {
       initializationSettingsAndroid, initializationSettingsIOS);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
       onSelectNotification: (String payload) async {
+
         if (payload != null) {
           debugPrint('notification payload: ' + payload);
         }
+
+
         selectNotificationSubject.add(payload);
       });
 
