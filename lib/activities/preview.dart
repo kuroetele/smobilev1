@@ -55,12 +55,6 @@ class _PreviewState extends State<Preview> {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    _pauses();
-    super.dispose();
-  }
-
   void addAsRedArticle() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(url, url);
